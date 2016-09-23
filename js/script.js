@@ -76,7 +76,7 @@
 
                 if(_act[j].kill[k].equip[m].ren === nick) {
                   spend = spend + _act[j].kill[k].equip[m].point
-                  page.spend = spend
+                  page.spend = page.spend + _act[j].kill[k].equip[m].point
                   page.info.push(_act[j].kill[k].equip[m])
                 }
 
