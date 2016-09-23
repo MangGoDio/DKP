@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>DKP日志</title>
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/style.css?v=20160923">
+    <script type="text/javascript" src="./js/vue.min.js"></script>
+    <script type="text/javascript" src="./js/diary.js?v=20160923"></script>
+</head>
+<body>
+    <table v-cloak v-show="!status.team" transition="toggle">
+      <thead>
+        <tr>
+          <th>昵称</th>
+          <th>全称</th>
+          <th>职业</th>
+          <th>得分</th>
+          <th>消费</th>
+          <th>当前</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="list of table" @click="showInfo($index)">
+          <td v-text="list.nick"></td>
+          <td v-text="list.name"></td>
+          <td v-text="list.pro"></td>
+          <td v-text="list.total"></td>
+          <td v-text="list.spend"></td>
+          <td v-text="list.save"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <nav @click="status.team = !status.team" v-text="status.team ? 'DKP概况' : '团队日志'"></nav>
+
+    <section v-cloak v-show="status.team" transition="toggle">
+      <ul>
+        <li v-for="day of diary">
+          <p v-text="day.date"></p>
+          <p>
+            <span>集合人员：</span>
+            <span v-text="json(day.begin)"></span>
+          </p>
+          <p>
+            <span>有事请假：</span>
+            <span v-text="json(day.off)"></span>
+          </p>
+          <p>
+            <span>解散人员：</span>
+            <span v-text="json(day.end)"></span>
+          </p>
+          <p v-text="'击杀BOSS：' + day.kill.length + ' 个'"></p>
+          <ul>
+            <li v-for="list of day.kill">
+              <p v-text="list.dif + list.name"></p>
+              <p>
+                <span>参与击杀：</span>
+                <span v-text="json(list.ren)"></span>
+              </p>
+              <ul>
+                <li v-for="info of list.equip" v-text="treasure(info)"></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <div v-cloak v-show="status.box" transition="toggle" class="info">
+      <p v-text="infoBox.name"></p>
+      <ul>
+        <li v-text="'得分：'+ infoBox.total"></li>
+        <li v-text="'消费：'+ infoBox.spend"></li>
+        <li v-text="'当前：'+ infoBox.save"></li>
+      </ul>
+      <ul>
+        <li v-for="list of infoBox.date">
+          <p v-text="list.date"></p>
+          <ul>
+            <li v-text="'集合分 ' + list.begin"></li>
+            <li v-text="'BOSS分 ' + list.boss"></li>
+            <li v-text="'解散分 ' + list.end"></li>
+            <li v-text="'消费分 ' + list.spend"></li>
+            <ul>
+              <li v-for="info of list.info"
+                  v-text="info.point + '分 ' + info.name"></li>
+            </ul>
+          </ul>
+        </li>
+      </ul>
+      <span @click="status.box = false"></span>
+    </div>
+
+</body>
+    <script type="text/javascript" src="./js/script.js?v=20160923"></script>
+</html>
