@@ -23,7 +23,7 @@ table tr > td, table tr > th {
   padding: 13px 0;
 }
 
-table > tbody > tr:hover {
+table > tbody > tr:hover, thead > tr > th:hover {
   cursor: pointer;
   background: rgba(0,0,0,0.4);
 }
@@ -71,17 +71,38 @@ section > ul > li > ul > li > p:first-of-type {
   font-size: 20px;
 }
 
-section > ul > li > ul > li {
+section .other {
+  display: inline-block;
+  margin-right: 10%;
+}
+
+section .boss > li {
   margin-top: 9px;
   padding-top: 9px;
-  border-top: 2px solid;
+  border-top: 2px dashed;
+}
+
+section .boss > li > ul {
+  margin: 15px 0;
 }
 
 section > ul > li > ul > li > ul > li {
   margin-bottom: 3px;
+  box-sizing: border-box;
+  display: inline-block;
+  margin-right: 1%;
+  border: 1px solid;
+  padding: 1px 8px;
+  width: 15%;
+  min-height: 46px;
+  vertical-align: top;
+  border-radius: 1px;
+  text-align: center;
 }
 
-section p {
+section > ul > li {
+  margin-bottom: 40px;
+  letter-spacing: 1px;
 }
 
 section p > span:first-of-type {
@@ -89,7 +110,7 @@ section p > span:first-of-type {
   vertical-align: top;
 }
 
-section p > span:last-of-type {
+section p .right {
   display: inline-block;
   width: 87%;
 }
@@ -99,7 +120,7 @@ section p > span:last-of-type {
   background: #0367c9;
   left: 0;
   right: 0;
-  width: 370px;
+  width: 500px;
   top: 150px;
   z-index: 3;
   margin: auto;

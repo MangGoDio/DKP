@@ -12,16 +12,18 @@
     <table v-cloak v-show="!status.team" transition="toggle">
       <thead>
         <tr>
-          <th>昵称</th>
-          <th>全称</th>
-          <th>职业</th>
-          <th>得分</th>
-          <th>消费</th>
-          <th>当前</th>
+          <th @click="keySort('nick', bool, 'str')">昵称</th>
+          <th @click="keySort('name', bool, 'str')">全称</th>
+          <th @click="keySort('pro', bool, 'str')">职业</th>
+          <th @click="keySort('total', bool, 'num')">得分</th>
+          <th @click="keySort('spend', bool, 'num')">花费</th>
+          <th @click="keySort('save', bool, 'num')">当前</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="list of table" @click="showInfo($index)">
+        <tr v-for="list of table"
+            @click="showInfo($index)"
+            :class="proColor(list.pro)">
           <td v-text="list.nick"></td>
           <td v-text="list.name"></td>
           <td v-text="list.pro"></td>
@@ -39,27 +41,66 @@
         <li v-for="day of diary">
           <p v-text="day.date"></p>
           <p>
-            <span>集合人员：</span>
-            <span v-text="json(day.begin)"></span>
+            <span class="left">集合人员：</span>
+            <span class="right">
+              <em v-for="info of day.begin"
+                  v-text="info + '、'"
+                  :class="nameColor(info)"></em>
+            </span>
           </p>
           <p>
-            <span>有事请假：</span>
-            <span v-text="json(day.off)"></span>
+            <span class="left">有事请假：</span>
+            <span class="right">
+              <em v-for="info of day.off"
+                  v-text="info + '、'"
+                  :class="nameColor(info)"></em>
+            </span>
           </p>
           <p>
-            <span>解散人员：</span>
-            <span v-text="json(day.end)"></span>
+            <span class="left">解散人员：</span>
+            <span class="right">
+              <em v-for="info of day.end"
+                  v-text="info + '、'"
+                  :class="nameColor(info)"></em>
+            </span>
           </p>
           <p v-text="'击杀BOSS：' + day.kill.length + ' 个'"></p>
-          <ul>
+          <p>
+            <span>分数概况：</span>
+            <span>
+              <ul class="other">
+                <li v-for="add of day.add">
+                  <em v-text="add.name" :class="nameColor(add.name)"></em>
+                  <span v-text="' +' + add.point + '分 ' + add.mes"></span>
+                </li>
+              </ul>
+              <ul class="other">
+                <li v-for="reduce of day.reduce">
+                  <em v-text="reduce.name" :class="nameColor(reduce.name)"></em>
+                  <span v-text="' -' + reduce.point + '分 ' + reduce.mes"></span>
+                </li>
+              </ul>
+            </span>
+          </p>
+          <ul class="boss">
             <li v-for="list of day.kill">
               <p v-text="list.dif + list.name"></p>
               <p>
-                <span>参与击杀：</span>
-                <span v-text="json(list.ren)"></span>
+                <span class="left">参与击杀：</span>
+                <span class="right">
+                  <em v-for="infoRen of list.ren"
+                      v-text="infoRen + '、'"
+                      :class="nameColor(infoRen)"></em>
+                </span>
               </p>
               <ul>
-                <li v-for="info of list.equip" v-text="treasure(info)"></li>
+                <li v-for="info of list.equip">
+                  <p>
+                    <em v-text="info.ren" :class="nameColor(info.ren)"></em>
+                    <span v-text="treasure(info)"></span>
+                  </p>
+                  <p v-text="info.name"></p>
+                </li>
               </ul>
             </li>
           </ul>
@@ -71,20 +112,30 @@
       <p v-text="infoBox.name"></p>
       <ul>
         <li v-text="'得分：'+ infoBox.total"></li>
-        <li v-text="'消费：'+ infoBox.spend"></li>
+        <li v-text="'花费：'+ infoBox.spend"></li>
         <li v-text="'当前：'+ infoBox.save"></li>
       </ul>
       <ul>
         <li v-for="list of infoBox.date">
           <p v-text="list.date"></p>
           <ul>
-            <li v-text="'集合分 ' + list.begin"></li>
-            <li v-text="'BOSS分 ' + list.boss"></li>
-            <li v-text="'解散分 ' + list.end"></li>
-            <li v-text="'消费分 ' + list.spend"></li>
+            <li v-text="'集合：' + list.begin"></li>
+            <li v-text="'BOSS：' + list.boss"></li>
+            <li v-text="'解散：' + list.end"></li>
+            <li v-text="'消费：' + list.spend"></li>
+            <li v-text="'奖励：' + list.add"></li>
+            <li v-text="'犯错：' + list.reduce"></li>
             <ul>
               <li v-for="info of list.info"
-                  v-text="info.point + '分 ' + info.name"></li>
+                  v-text="'-' + info.point + '分 ' + info.name"></li>
+            </ul>
+            <ul>
+              <li v-for="add of list.addMes"
+                  v-text="'+' + add.point + '分 ' + add.mes"></li>
+            </ul>
+            <ul>
+              <li v-for="reduce of list.reduceMes"
+                  v-text="'-' + reduce.point + '分 ' + reduce.mes"></li>
             </ul>
           </ul>
         </li>

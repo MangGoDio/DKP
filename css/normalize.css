@@ -13,6 +13,10 @@ ul, li, p {
   display: none;
 }
 
+em {
+  font-style: normal;
+}
+
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none !important;
@@ -21,4 +25,52 @@ input[type="number"]::-webkit-inner-spin-button {
 
 input[type="number"]{
   -moz-appearance: textfield;
+}
+
+.zs {
+  color: #c3986b;
+}
+
+.fs {
+  color: #67c9ea;
+}
+
+.ms {
+  color: #ece6dc;
+}
+
+.dk {
+  color: #c11d3a;
+}
+
+.qs {
+  color: #f089b6;
+}
+
+.lr {
+  color: #a8d070;
+}
+
+.dz {
+  color: #fbf066;
+}
+
+.dh {
+  color: #c600ff;
+}
+
+.sm {
+  color: #2357fa;
+}
+
+.ws {
+  color: #01fbb7;
+}
+
+.ss {
+  color: #907fc5;
+}
+
+.xd {
+  color: #fc7d0d;
 }
