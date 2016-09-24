@@ -352,11 +352,6 @@ var _act = [
   off: ['老严','6BB'], // 请假分 10
   end: [],
   add: [
-    {
-      name: '',
-      point: ,
-      mes: ''
-    },
   ],
   reduce: [
     {
@@ -374,35 +369,30 @@ var _act = [
               ,'樱井','吊爷','小灵','火歌','麦兜','尼好','悟饭'],
       equip: [
         {
-          name: '',
-          point: ,
-          ren: ''
+          name: '皮甲鞋',
+          point: 50,
+          ren: '奇迹'
         },
         {
-          name: '',
-          point: ,
-          ren: ''
+          name: '神圣圣物',
+          point: 60,
+          ren: '西法'
         },
         {
-          name: '',
-          point: ,
-          ren: ''
+          name: '戒指',
+          point: 105,
+          ren: '言水'
         },
         {
-          name: '',
-          point: ,
-          ren: ''
+          name: '冰霜圣物',
+          point: 100,
+          ren: '蝌蚪王'
         },
         {
-          name: '',
-          point: ,
-          ren: ''
-        },
-        {
-          name: '',
-          point: ,
-          ren: ''
-        },
+          name: '板甲衣',
+          point: 50,
+          ren: '吊爷'
+        }
       ]
     }
   ]
