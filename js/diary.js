@@ -366,6 +366,16 @@ var _act = [
       name: '今晚',
       point: 50,
       mes: '初始分'
+    },
+    {
+      name: '奇迹',
+      point: 5,
+      mes: 'H尼姗德拉DPS第一'
+    },
+    {
+      name: '猫粮',
+      point: 5,
+      mes: 'H尼姗德拉治疗第一'
     }
   ],
   reduce: [
