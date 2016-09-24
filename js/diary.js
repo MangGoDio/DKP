@@ -352,6 +352,21 @@ var _act = [
   off: ['老严','6BB'], // 请假分 10
   end: [],
   add: [
+    {
+      name: '尼好',
+      point: 50,
+      mes: '初始分'
+    },
+    {
+      name: '饭团',
+      point: 50,
+      mes: '初始分'
+    },
+    {
+      name: '今晚',
+      point: 50,
+      mes: '初始分'
+    }
   ],
   reduce: [
     {
