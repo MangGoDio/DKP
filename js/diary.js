@@ -678,25 +678,25 @@ add: [
   {
     name: '血魔',
     point: 5,
-    ren: 'H眼球DPS第一'
+    mes: 'H眼球DPS第一'
   }
   ,
   {
     name: '西法',
     point: 5,
-    ren: 'H眼球治疗第一'
+    mes: 'H眼球治疗第一'
   }
   ,
   {
     name: '奇迹',
     point: 5,
-    ren: 'H乌索克DPS第一'
+    mes: 'H乌索克DPS第一'
   }
   ,
   {
     name: '猫粮',
     point: 5,
-    ren: 'H乌索克治疗第一'
+    mes: 'H乌索克治疗第一'
   }
 ],
 reduce: [
@@ -711,32 +711,32 @@ reduce: [
     mes: '风放绿水上'
   },
   {
-    name: '死在内场',
+    name: '吊爷',
     point: 10,
-    ren: '吊爷'
+    mes: '死在内场'
   },
   {
-    name: '死在内场',
+    name: '前卫',
     point: 10,
-    ren: '前卫'
+    mes: '死在内场'
   }
   ,
   {
-    name: '死在内场',
+    name: '风哥',
     point: 10,
-    ren: '风哥'
+    mes: '死在内场'
   }
   ,
   {
-    name: '死在内场',
+    name: '踏足者',
     point: 10,
-    ren: '踏足者'
+    mes: '死在内场'
   }
   ,
   {
-    name: '乌索克跑头上',
+    name: '小灵',
     point: 10,
-    ren: '小灵'
+    mes: '乌索克跑头上'
   }
 ],
 kill: [
@@ -842,12 +842,6 @@ kill: [
       }
       ,
       {
-        name: 'TSP',
-        point: 20,
-        ren: '麦兜'
-      }
-      ,
-      {
         name: '布甲护腕',
         point: 10,
         ren: '猫粮'
@@ -876,7 +870,6 @@ var _gays = [
   {id: 6,nick: '奇迹',name: '奇迹吾身与共',pro: '德鲁伊'},
   {id: 7,nick: '蝌蚪王',name: '蝌蚪王',pro: '德鲁伊'},
   {id: 8,nick: '踏足者',name: '踏足者',pro: '德鲁伊'},
-  {id: 9,nick: '本泽马',name: '本泽马丶',pro: '德鲁伊'},
   {id: 28,nick: '小峰',name: '随机食品',pro: '德鲁伊'},
   {id: 10,nick: '猫粮',name: '不吃猫粮的喵',pro: '牧师'},
   {id: 35,nick: '大H',name: 'Hydrá',pro: '牧师'},
