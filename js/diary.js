@@ -784,7 +784,7 @@ kill: [
     equip: [
       {
         name: '布甲腰带',
-        point: 50,
+        point: 25,
         ren: '猫粮'
       },
       {
@@ -856,35 +856,74 @@ kill: [
   }
 ]
 }
+,
+{
+id: 6,
+date: '2016.10.01',
+begin: ['阿何','吊爷','麦兜','饭团','奇迹','西法','老圈','猫粮','速度灭','辣眼睛','滑稽'
+      ,'一建','血魔','小七','小峰','火歌','小黑','马静','樱井','小虾','私欲','正气','前卫'
+      ,'风哥','满爷'],
+off: ['老严','6BB','黑锋'], // 请假分 10
+end: [],
+add: [
+  {
+    name: '辣眼睛',
+    point: 50,
+    mes: '初始分'
+  },
+  {
+    name: '私欲',
+    point: 50,
+    mes: '初始分'
+  },
+  {
+    name: '正气',
+    point: 50,
+    mes: '初始分'
+  }
+],
+reduce: [],
+kill: [
+  {
+    name: '蜘蛛鸟',
+    dif: 'H',
+    ren: [],
+    equip: []
+  }
+]
+}
 ]
 
 var _gays = [
   {id: 1,nick: '阿何',name: '零下一度',pro: '战士'},
   {id: 2,nick: '吊爷',name: '吊爷不懒惰',pro: '战士'},
   {id: 38,nick: '饭团',name: '冲锋的饭团儿',pro: '战士'},
-  {id: 42,nick: '河蟹',name: '河蟹',pro: '战士'},
+  //{id: 42,nick: '河蟹',name: '河蟹',pro: '战士'},
   {id: 4,nick: '麦兜',name: 'Réinhàrdt',pro: '圣骑士'},
   {id: 30,nick: '悟饭',name: 'Babycora',pro: '圣骑士'},
   {id: 5,nick: '西法',name: '西法灬',pro: '圣骑士'},
   {id: 27,nick: '小虾',name: '蓝晓虾',pro: '圣骑士'},
+  {id: 43,nick: '老圈',name: '明鸟',pro: '德鲁伊'},
   {id: 6,nick: '奇迹',name: '奇迹吾身与共',pro: '德鲁伊'},
   {id: 7,nick: '蝌蚪王',name: '蝌蚪王',pro: '德鲁伊'},
-  {id: 8,nick: '踏足者',name: '踏足者',pro: '德鲁伊'},
+  //{id: 8,nick: '踏足者',name: '踏足者',pro: '德鲁伊'},
   {id: 28,nick: '小峰',name: '随机食品',pro: '德鲁伊'},
   {id: 10,nick: '猫粮',name: '不吃猫粮的喵',pro: '牧师'},
-  {id: 35,nick: '大H',name: 'Hydrá',pro: '牧师'},
+  //{id: 35,nick: '大H',name: 'Hydrá',pro: '牧师'},
   {id: 15,nick: '风哥',name: '紫色星星',pro: '猎人'},
   {id: 11,nick: '满爷',name: '漓墨',pro: '猎人'},
   {id: 12,nick: '马静',name: 'Imvback',pro: '猎人'},
   {id: 13,nick: '火歌',name: '火歌精灵',pro: '猎人'},
   {id: 31,nick: '老严',name: '叫我老严好了',pro: '猎人'},
   {id: 14,nick: '伤心',name: '伤心绝望',pro: '猎人'},
-  {id: 39,nick: '尼好',name: '尼好旅行者',pro: '猎人'},
+  //{id: 39,nick: '尼好',name: '尼好旅行者',pro: '猎人'},
   {id: 40,nick: '今晚',name: '今晚猎的痛快',pro: '猎人'},
   {id: 16,nick: '血魔',name: '丶卡尔丶',pro: '法师'},
   {id: 41,nick: '一建',name: '一建倾心',pro: '法师'},
   {id: 23,nick: '滑稽',name: '欧吃矛',pro: '法师'},
   {id: 25,nick: '速度灭',name: '速度灭灬',pro: '萨满'},
+  {id: 44,nick: '辣眼睛',name: '萌到辣眼睛',pro: '萨满'},
+  {id: 45,nick: '正气',name: '嚯香正气',pro: '萨满'},
   {id: 17,nick: '小七',name: 'Krystale',pro: '术士'},
   {id: 18,nick: '6BB',name: '柳哔哔',pro: '术士'},
   {id: 36,nick: '蘑菇',name: '小鸡炒蘑菇',pro: '术士'},
@@ -894,9 +933,10 @@ var _gays = [
   {id: 29,nick: '黑锋',name: '黑锋强盗',pro: '死亡骑士'},
   {id: 26,nick: '小黑',name: '工口少女黄泉',pro: '恶魔猎手'},
   {id: 20, nick: 'Des',name: 'Desperater',pro: '恶魔猎手'},
-  {id: 21,nick: '杯酱',name: '杯酱',pro: '恶魔猎手'},
+  {id: 46, nick: '私欲',name: '私欲乱人心',pro: '恶魔猎手'},
+  //{id: 21,nick: '杯酱',name: '杯酱',pro: '恶魔猎手'},
   {id: 22,nick: '言水',name: '言水',pro: '恶魔猎手'},
-  {id: 24,nick: '命运',name: '命运宠儿',pro: '恶魔猎手'},
+  //{id: 24,nick: '命运',name: '命运宠儿',pro: '恶魔猎手'},
   {id: 37,nick: '前卫',name: '前卫萧卡加',pro: '恶魔猎手'}
 ]
 
