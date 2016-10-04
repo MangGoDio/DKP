@@ -2,6 +2,7 @@ body {
   background: url(../img/bg.jpg) no-repeat #034789;
   font-size: 16px;
   color: #def;
+  overflow-y:scroll;
 }
 
 body > table, section {
@@ -21,6 +22,7 @@ table tr {
 
 table tr > td, table tr > th {
   padding: 13px 0;
+  transition: .5s;
 }
 
 table > tbody > tr:hover, thead > tr > th:hover {
@@ -28,20 +30,112 @@ table > tbody > tr:hover, thead > tr > th:hover {
   background: rgba(0,0,0,0.4);
 }
 
+table > tbody > tr:hover > td {
+  transform: translateY(-5px);
+}
+
+select, option {
+  background: rgb(53, 135, 220);
+  border: 0;
+  padding: 2px;
+}
+
 nav {
   position: fixed;
-  font-size: 20px;
+  font-size: 18px;
   letter-spacing: 2px;
-  right: 14px;
+  right: 20px;
   top: 20px;
-  width: 170px;
+  z-index: 101;
+}
+
+nav .btn > li {
+  width: 130px;
   background: rgba(0,0,0,0.3);
-  height: 45px;
+  height: 40px;
   text-align: center;
-  line-height: 45px;
+  line-height: 40px;
   border-radius: 3px;
   border: 1px solid;
   cursor: pointer;
+  margin-bottom: 10px;
+  -webkit-transform: translate3d(0,0,0);
+          transform: translate3d(0,0,0);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-perspective: 1000;
+          perspective: 1000;
+  -webkit-transition: 200ms ease;
+  transition: 200ms ease;
+}
+
+nav .btn > li:hover {
+  -webkit-transform: translateY(-4px);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 7px rgba(0, 0, 0, 0.25);
+}
+
+nav .btn .update {
+  position: relative;
+}
+
+nav .btn .update:hover > .update-diary {
+  display: block;
+  top: 63px;
+  visibility: visible;
+  opacity: 1;
+}
+
+nav .update-diary {
+  position: absolute;
+  -webkit-filter: drop-shadow(1px 1px 5px rgba(0, 0, 0, 0.2));
+          filter: drop-shadow(1px 1px 5px rgba(0, 0, 0, 0.2));
+  padding: 15px;
+  text-align: left;
+  line-height: 1.3;
+  font-size: 15px;
+  top: 50px;
+  right: 0;
+  width: 250px;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: .4s cubic-bezier(.68,-0.88,.48,2.02);
+  transition: .4s cubic-bezier(.68,-0.88,.48,2.02);
+  border-radius: 3px;
+  background: rgba(0,0,0,0.3);
+}
+
+nav .update-diary:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 11px solid transparent;
+  border-right: 11px solid transparent;
+  border-bottom: 11px solid rgba(0,0,0,0.3);
+  top: -11px;
+  right: 56px;
+}
+
+nav .update-diary:before {
+  content: '';
+  position: absolute;
+  width: 120px;
+  height: 15px;
+  top: -15px;
+  right: 0;
+}
+
+nav .update-diary > li {
+  list-style: decimal;
+  margin-left: 20px;
+  margin-bottom: 5px;
+}
+
+nav .update-diary > li:last-of-type {
+  list-style: none;
+  text-align: right;
+  margin-top: 20px;
 }
 
 section {
@@ -56,18 +150,66 @@ section {
   border: none;
 }
 
-section > ul > li > p:first-of-type {
-  font-size: 25px;
-  border-bottom: 3px solid;
-  padding-bottom: 5px;
+section > ul > li > .head {
+  position: relative;
+  cursor: pointer;
 }
 
-section > ul > li > p,
-section > ul > li > ul > li > p {
+section > ul > li > .head > p {
+  font-size: 25px;
+  border-bottom: 3px solid;
+}
+
+section > ul > li > .head > span,
+section > ul > li > .head > span:after {
+  width: 10px;
+  height: 10px;
+  border-bottom: 2px solid #fff;
+  border-right: 2px solid #fff;
+  position: absolute;
+  right: 14px;
+  top: -2px;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+section > ul > li > .head > span:after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  right: -10px;
+  -webkit-transform: rotate(0);
+          transform: rotate(0);
+}
+
+section > ul li > .head > span {
+  animation: vertical 2s infinite;
+}
+
+section > ul li.active > .head > span {
+  top: 16px;
+  -webkit-transform: rotate(-135deg);
+  transform: rotate(-135deg);
+  animation: none;
+}
+
+section > ul > li > .main {
+  padding-top: 10px;
+  transition: .5s ease-in-out;
+  max-height: 0;
+  overflow: hidden;
+}
+
+section > ul li.active > .main {
+  max-height: 1000px;
+}
+
+section > ul > li > .main > p,
+section > ul > li > .main > ul > li > p {
   margin-bottom: 5px;
 }
 
-section > ul > li > ul > li > p:first-of-type {
+section > ul > li > .main > ul > li > p:first-of-type {
   font-size: 20px;
 }
 
@@ -86,13 +228,13 @@ section .boss > li > ul {
   margin: 15px 0;
 }
 
-section > ul > li > ul > li > ul > li {
+section > ul > li > .main > ul > li > ul > li {
   margin-bottom: 3px;
   box-sizing: border-box;
   display: inline-block;
   margin-right: 1%;
   border: 1px solid;
-  padding: 1px 8px;
+  padding: 1px 0;
   width: 15%;
   min-height: 46px;
   vertical-align: top;
@@ -101,8 +243,8 @@ section > ul > li > ul > li > ul > li {
 }
 
 section > ul > li {
-  margin-bottom: 40px;
   letter-spacing: 1px;
+  padding: 5px 0;
 }
 
 section p > span:first-of-type {
@@ -187,6 +329,42 @@ section p .right {
   margin-right: 10px;
 }
 
+.chart {
+  height: 500px;
+  width: 90%;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  left: 0;
+  right: 0;
+  z-index: -1;
+}
+
+.chart.active {
+  z-index: 100;
+}
+
+#myChart {
+  width: 100%;
+  height: 500px;
+}
+
+@media screen and (max-width: 639px) {
+  .btn {display: none;}
+  body > table {
+    width: 100%;
+    margin: 0;
+  }
+  .info {
+    position: absolute;
+    top: 50px;
+    width: 90%;
+    font-size: 1.2em;
+    box-sizing: border-box;
+  }
+}
+
 .toggle-transition {
   -webkit-transition: all .3s ease;
   transition: all .3s ease;
@@ -200,4 +378,16 @@ section p .right {
   -webkit-transform: perspective(1000px) translateZ(-100px) rotateY(10deg) rotateX(-15deg);
           transform: perspective(1000px) translateZ(-100px) rotateY(10deg) rotateX(-15deg);
   opacity: 0;
+}
+
+@keyframes vertical {
+  0% {
+    transform: rotate(45deg) translate(-2px, -2px);
+  }
+  50% {
+    transform: rotate(45deg) translate(2px, 2px);
+  }
+  100% {
+    transform: rotate(45deg) translate(-2px, -2px);
+  }
 }

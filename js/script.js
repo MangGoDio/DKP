@@ -6,13 +6,27 @@
     el: 'body',
     data: {
       table: [],
-      diary: _act,
+      diary: [],
       status: {
         team: false,
-        box: false
+        box: false,
+        diary: [],
+        chart: false
+      },
+      sort: {
+        nick: false,
+        name: false,
+        pro: false,
+        total: false,
+        spend: false,
+        save: false
       },
       bool: false,
-      infoBox: []
+      infoBox: [],
+      infoBoxDate: [],
+      thisDate: '',
+      dateNum: [],
+      updateDiary: _update
     },
     computed: {
 
@@ -29,8 +43,14 @@
         }
       },
       showInfo: function (index) {
+        var arr = []
         vm.infoBox = vm.table[index]
+        for(var i = 1; i < 4; i++) {
+          arr.unshift(vm.infoBox.date[vm.infoBox.date.length - i])
+        }
         vm.status.box = true
+        vm.infoBoxDate = arr
+        vm.thisDate = vm.infoBoxDate[vm.infoBoxDate.length - 1].id
       },
       proColor: function (pro) {
         return eng[chinese.indexOf(pro)]
@@ -47,7 +67,31 @@
 
         return eng[chinese.indexOf(pro)]
       },
-      keySort: function (key, bool, type) {
+      dateChange: function () {
+        var arr = []
+        for(var i = 1; i < 4; i++) {
+          arr.unshift(vm.infoBox.date[vm.thisDate * 3 - i])
+        }
+        vm.infoBoxDate = arr
+      },
+      showDiary: function (index) {
+        vm.status.diary.$set(index, !vm.status.diary[index])
+      },
+      keySort: function (key) {
+
+        var bool = !vm.sort[key]
+
+        var compare = function (a, b) {
+          if (a[key] < b[key]) {
+            return bool ? 1 : -1
+          } else if (a[key] > b[key]) {
+            return bool ? -1 : 1
+          }
+        }
+
+        vm.sort[key] = bool
+
+        vm.table.sort(compare)
 
       },
       init: function () {
@@ -63,7 +107,8 @@
 
           for (var j = 0, jotaro = _act.length; j < jotaro; j++ ) {
 
-            var page = {date: _act[j].date,
+            var page = {id: _act[j].id,
+                        date: _act[j].date,
                         begin: 0,
                         end: 0,
                         boss: 0,
@@ -144,15 +189,101 @@
 
           }
 
-          arr.push({nick: nick, name: name, pro: pro, total: total, spend: spend, save: total - spend, date: pageList})
+          arr.push({nick: nick,
+                    name: name,
+                    pro: pro,
+                    total: total,
+                    spend: spend,
+                    save: total - spend,
+                    date: pageList})
 
       }
 
       vm.table = arr
 
+      vm.dateDiary()
+      vm.actDiary()
+
+    },
+    dateDiary: function () {
+      var arr = [], statusArr = []
+
+      for(var i = 0, dio = _act.length; i < dio; i++) {
+        statusArr.push(false)
+      }
+
+      for (var j = 0, jotaro = _act.length; j < jotaro; j = j + 3) {
+        arr.push({id: _act[j].id, begin: _act[j].date, end: _act[j+2].date})
+      }
+
+      vm.dateNum = arr
+      vm.status.diary = statusArr
+      vm.thisDate = arr[arr.length - 1].id
+
+    },
+    actDiary: function () {
+      var arr = []
+      for (var j = 0, jotaro = _act.length; j < jotaro; j++) {
+        arr.unshift(_act[j])
+      }
+      vm.diary = arr
+    },
+    chart: function () {
+
+      var chart = document.querySelector('.chart')
+
+      if(chart.className === 'chart') {
+        var arrName = [], arrNum = []
+
+        for (var i = 0, dio = vm.table.length; i < dio; i++) {
+          arrName.push(vm.table[i].nick)
+          arrNum.push(vm.table[i].save)
+        }
+
+        var options = {
+        	scaleFontFamily : "'微软雅黑'",
+        	scaleFontColor : "#fff"
+        }
+
+        var ctx = document.getElementById('myChart').getContext('2d'),
+            data = {
+              labels : arrName,
+              datasets : [
+                {
+                  fillColor : "rgba(220,220,220,0.5)",
+                  strokeColor : "rgba(220,220,220,1)",
+                  data : arrNum
+                }
+              ]
+            }
+
+        var myNewChart = new Chart(ctx).Bar(data, options)
+
+        chart.classList.add('active')
+      } else {
+        var ctx = document.getElementById('myChart').getContext('2d'),
+            data = {
+              labels : [],
+              datasets : [
+                {
+                  fillColor : "rgba(220,220,220,0.5)",
+                  strokeColor : "rgba(220,220,220,1)",
+                  pointColor : "rgba(255,255,255,1)",
+			            pointStrokeColor : "#fff",
+                  data : []
+                }
+              ]
+            }
+
+        var myNewChart = new Chart(ctx).Bar(data)
+
+        chart.classList.remove('active')
+      }
+
+
     }
   }
-  })
+})
 
   vm.init()
 
