@@ -360,7 +360,7 @@ section p .right {
     position: absolute;
     top: 50px;
     width: 90%;
-    font-size: 1.2em;
+    font-size: 1em;
     box-sizing: border-box;
   }
 }
