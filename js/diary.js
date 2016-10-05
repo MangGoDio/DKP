@@ -889,6 +889,11 @@ add: [
     mes: '全勤分'
   },
   {
+    name: '满爷',
+    point: 30,
+    mes: '全勤分'
+  },
+  {
     name: '西法',
     point: 30,
     mes: '全勤分'
