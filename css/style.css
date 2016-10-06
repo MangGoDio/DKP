@@ -201,7 +201,7 @@ section > ul > li > .main {
 }
 
 section > ul li.active > .main {
-  max-height: 1000px;
+  max-height: 2000px;
 }
 
 section > ul > li > .main > p,
