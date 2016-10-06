@@ -963,25 +963,103 @@ reduce: [
   }
 ],
 kill: []
+},
+{
+  id: 3,
+  date: '2016.10.6',
+  begin: ['阿何','一建','奇迹','奥特曼','老圈','猫粮','正气','神魔','蝌蚪王','马静'
+          ,'大T','喵星人','蘑菇','西法','大S','河蟹','小黑','吊爷','火歌','大H','前卫'
+        ,'言水','满爷','风哥','血魔','滑稽','命运','小虾','小峰','6BB','小七','麦兜'],
+  off: ['悟饭','樱井','速度灭','老严','小灵'], // 请假分 10
+  end: [],
+  add: [
+    {
+      name: '奥特曼',
+      point: 50,
+      mes: '初始分'
+    }
+    ,
+    {
+      name: '神魔',
+      point: 50,
+      mes: '初始分'
+    }
+    ,
+    {
+      name: '大T',
+      point: 50,
+      mes: '初始分'
+    }
+    ,
+    {
+      name: '大S',
+      point: 50,
+      mes: '初始分'
+    }
+  ],
+  reduce: [],
+  kill: [
+    {
+      name: '',
+      dif: '',
+      ren: [],
+      equip: []
+    }
+  ]
+},
+{
+  id: 3,
+  date: '2016.10.7',
+  begin: [],
+  off: [], // 请假分 10
+  end: [],
+  add: [],
+  reduce: [],
+  kill: [
+    {
+      name: '',
+      dif: '',
+      ren: [],
+      equip: []
+    }
+  ]
+},
+{
+  id: 3,
+  date: '2016.10.8',
+  begin: [],
+  off: [], // 请假分 10
+  end: [],
+  add: [],
+  reduce: [],
+  kill: [
+    {
+      name: '',
+      dif: '',
+      ren: [],
+      equip: []
+    }
+  ]
 }
 ]
 
 var _gays = [
   {id: 1,nick: '阿何',name: '零下一度',pro: '战士'},
   {id: 2,nick: '吊爷',name: '吊爷不懒惰',pro: '战士'},
-  {id: 38,nick: '饭团',name: '冲锋的饭团儿',pro: '战士'},
-  //{id: 42,nick: '河蟹',name: '河蟹',pro: '战士'},
+  //{id: 38,nick: '饭团',name: '冲锋的饭团儿',pro: '战士'},
+  {id: 42,nick: '河蟹',name: '河蟹',pro: '战士'},
   {id: 4,nick: '麦兜',name: 'Réinhàrdt',pro: '圣骑士'},
   {id: 30,nick: '悟饭',name: 'Babycora',pro: '圣骑士'},
   {id: 5,nick: '西法',name: '西法灬',pro: '圣骑士'},
   {id: 27,nick: '小虾',name: '蓝晓虾',pro: '圣骑士'},
+  {id: 46,nick: '神魔',name: '神魔之雪',pro: '圣骑士'},
   {id: 43,nick: '老圈',name: '明鸟',pro: '德鲁伊'},
   {id: 6,nick: '奇迹',name: '奇迹吾身与共',pro: '德鲁伊'},
   {id: 7,nick: '蝌蚪王',name: '蝌蚪王',pro: '德鲁伊'},
   //{id: 8,nick: '踏足者',name: '踏足者',pro: '德鲁伊'},
   {id: 28,nick: '小峰',name: '随机食品',pro: '德鲁伊'},
   {id: 10,nick: '猫粮',name: '不吃猫粮的喵',pro: '牧师'},
-  //{id: 35,nick: '大H',name: 'Hydrá',pro: '牧师'},
+  {id: 35,nick: '大H',name: 'Hydrá',pro: '牧师'},
   {id: 15,nick: '风哥',name: '紫色星星',pro: '猎人'},
   {id: 11,nick: '满爷',name: '漓墨',pro: '猎人'},
   {id: 12,nick: '马静',name: 'Imvback',pro: '猎人'},
@@ -990,15 +1068,17 @@ var _gays = [
   {id: 14,nick: '伤心',name: '伤心绝望',pro: '猎人'},
   //{id: 39,nick: '尼好',name: '尼好旅行者',pro: '猎人'},
   {id: 40,nick: '今晚',name: '今晚猎的痛快',pro: '猎人'},
+  {id: 48,nick: '大T',name: 'Ticksk',pro: '猎人'},
   {id: 16,nick: '血魔',name: '丶卡尔丶',pro: '法师'},
   {id: 41,nick: '一建',name: '一建倾心',pro: '法师'},
   {id: 23,nick: '滑稽',name: '欧吃矛',pro: '法师'},
+  {id: 48,nick: '奥特曼',name: '奥特曼小怪兽',pro: '法师'},
   {id: 25,nick: '速度灭',name: '速度灭灬',pro: '萨满'},
-  //{id: 44,nick: '辣眼睛',name: '萌到辣眼睛',pro: '萨满'},
   {id: 45,nick: '正气',name: '嚯香正气',pro: '萨满'},
   {id: 17,nick: '小七',name: 'Krystale',pro: '术士'},
   {id: 18,nick: '6BB',name: '柳哔哔',pro: '术士'},
   {id: 36,nick: '蘑菇',name: '小鸡炒蘑菇',pro: '术士'},
+  {id: 47,nick: '大S',name: 'Secretg',pro: '武僧'},
   {id: 33,nick: '小灵',name: '亡灬小灵',pro: '盗贼'},
   {id: 3,nick: '樱井',name: '樱井智子丶',pro: '盗贼'},
   {id: 19,nick: '喵星人',name: '喵星人的救赎',pro: '死亡骑士'},
