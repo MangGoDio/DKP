@@ -1882,7 +1882,13 @@ add: [
     mes: '初始分'
   }
 ],
-reduce: [],
+reduce: [
+  {
+    name: '风哥',
+    point: 10,
+    mes: '提前开怪'
+  }
+],
 kill: [
   {
     name: '尼珊德拉',
@@ -1920,6 +1926,45 @@ kill: [
         name: '冰霜圣物',
         point: 55,
         ren: '蝌蚪王'
+      }
+    ]
+  },
+  {
+    name: '乌索克',
+    dif: 'H',
+    ren: ['阿何','黑锋','火空','吊爷','麦兜','悟饭','西法','小峰','大H','速度灭'
+    ,'今晚','马静','老严','火歌','大T','小虾','奇迹','小黑','樱井','言水'
+    ,'破魂','6BB','小七','奥特曼','一建','满爷','血魔','猫粮','蝌蚪王','蘑菇','风哥','前卫'],
+    equip: [
+      {
+        name: '皮甲衣',
+        point: 50,
+        ren: '小峰'
+      },
+      {
+        name: '治疗SP',
+        point: 100,
+        ren: '猫粮'
+      },
+      {
+        name: '治疗SP',
+        point: 100,
+        ren: '速度灭'
+      },
+      {
+        name: 'T SP',
+        point: 20,
+        ren: '阿何'
+      },
+      {
+        name: '锁甲肩',
+        point: 170,
+        ren: '马静'
+      },
+      {
+        name: '布甲鞋',
+        point: 50,
+        ren: '血魔'
       }
     ]
   }
@@ -1968,7 +2013,7 @@ var _gays = [
   {id: 2,nick: '吊爷',name: '吊爷不懒惰',pro: '战士'},
   //{id: 38,nick: '饭团',name: '冲锋的饭团儿',pro: '战士'},
   //{id: 42,nick: '河蟹',name: '河蟹',pro: '战士'},
-  {id: 42,nick: '火空',name: '火空爪爪',pro: '战士'},
+  //{id: 42,nick: '火空',name: '火空爪爪',pro: '战士'},
   {id: 4,nick: '麦兜',name: 'Réinhàrdt',pro: '圣骑士'},
   {id: 30,nick: '悟饭',name: 'Babycora',pro: '圣骑士'},
   {id: 5,nick: '西法',name: '西法灬',pro: '圣骑士'},
@@ -1990,7 +2035,7 @@ var _gays = [
   //{id: 39,nick: '尼好',name: '尼好旅行者',pro: '猎人'},
   {id: 40,nick: '今晚',name: '今晚猎的痛快',pro: '猎人'},
   {id: 48,nick: '大T',name: 'Ticksk',pro: '猎人'},
-  {id: 49,nick: '破魂',name: '破魂',pro: '猎人'},
+  //{id: 49,nick: '破魂',name: '破魂',pro: '猎人'},
   {id: 16,nick: '血魔',name: '丶卡尔丶',pro: '法师'},
   {id: 41,nick: '一建',name: '一建倾心',pro: '法师'},
   {id: 23,nick: '滑稽',name: '欧吃矛',pro: '法师'},
