@@ -2202,23 +2202,135 @@ kill: [
     equip: []
   }
 ]
+},
+{
+id: 6,
+date: '2016.10.30',
+begin: ['阿何','吊爷','西法','火歌','小灵','大洪','麦兜','火空','星坠','老圈'
+,'悟饭','速度灭','满爷','马静','风哥','破魂','奥特曼','大T','雷霆','血魔','大H'
+,'凯壮','一建','大M','小黑','喵星人','前卫'],
+off: [], // 请假分 10
+end: [],
+add: [
+  {
+    name: '大洪',
+    point: 50,
+    mes: '初始分'
+  },
+  {
+    name: '凯壮',
+    point: 50,
+    mes: '初始分'
+  },
+  {
+    name: '星坠',
+    point: 50,
+    mes: '初始分'
+  },
+  {
+    name: '雷霆',
+    point: 50,
+    mes: '初始分'
+  },
+  {
+    name: '大M',
+    point: 50,
+    mes: '初始分'
+  }
+],
+reduce: [],
+kill: [
+  {
+    name: '尼珊德拉',
+    dif: 'H',
+    ren: ['阿何','吊爷','西法','火歌','小灵','大洪','麦兜','火空','星坠','老圈'
+    ,'悟饭','速度灭','满爷','马静','风哥','破魂','奥特曼','大T','雷霆','血魔','大H'
+    ,'凯壮','一建','大M','小黑','喵星人','前卫'],
+    equip: [
+      {
+        name: '冰霜圣物',
+        point: 20,
+        ren: '悟饭'
+      },
+      {
+        name: '锁甲腰带',
+        point: 0,
+        ren: ''
+      },
+      {
+        name: '生命圣物',
+        point: 20,
+        ren: '大T'
+      },
+      {
+        name: '皮甲腰带',
+        point: 10,
+        ren: '老圈'
+      },
+      {
+        name: '板甲护腕',
+        point: 25,
+        ren: '西法'
+      }
+    ]
+  }
+]
+}
+,
+{
+id: 6,
+date: '2016.10.31',
+begin: [],
+off: [], // 请假分 10
+end: [],
+add: [],
+reduce: [],
+kill: [
+  {
+    name: '尼珊德拉',
+    dif: 'H',
+    ren: [],
+    equip: []
+  }
+]
+}
+,
+{
+id: 6,
+date: '2016.11.1',
+begin: [],
+off: [], // 请假分 10
+end: [],
+add: [],
+reduce: [],
+kill: [
+  {
+    name: '尼珊德拉',
+    dif: 'H',
+    ren: [],
+    equip: []
+  }
+]
 }
 ]
 
 var _gays = [
   {id: 1,nick: '阿何',name: '零下一度',pro: '战士'},
   {id: 2,nick: '吊爷',name: '吊爷不懒惰',pro: '战士'},
+  {id: 60,nick: '大洪',name: '大洪',pro: '战士'},
   //{id: 38,nick: '饭团',name: '冲锋的饭团儿',pro: '战士'},
   //{id: 42,nick: '河蟹',name: '河蟹',pro: '战士'},
-  //{id: 42,nick: '火空',name: '火空爪爪',pro: '战士'},
-  {id: 4,nick: '麦兜',name: 'Réinhàrdt',pro: '圣骑士'},
+  {id: 42,nick: '火空',name: '火空爪爪',pro: '战士'},
+  {id: 4,nick: '麦兜',name: '银临',pro: '圣骑士'},
   {id: 30,nick: '悟饭',name: 'Babycora',pro: '圣骑士'},
+  {id: 64,nick: '大M',name: 'Memoy',pro: '圣骑士'},
   {id: 5,nick: '西法',name: '西法灬',pro: '圣骑士'},
   {id: 27,nick: '小虾',name: '蓝晓虾',pro: '圣骑士'},
   //{id: 46,nick: '神魔',name: '神魔之雪',pro: '圣骑士'},
   {id: 43,nick: '老圈',name: '明鸟',pro: '德鲁伊'},
   {id: 6,nick: '奇迹',name: '奇迹吾身与共',pro: '德鲁伊'},
   {id: 7,nick: '蝌蚪王',name: '蝌蚪王',pro: '德鲁伊'},
+  {id: 61,nick: '星坠',name: '星坠',pro: '德鲁伊'},
   //{id: 8,nick: '踏足者',name: '踏足者',pro: '德鲁伊'},
   {id: 28,nick: '小峰',name: '随机食品',pro: '德鲁伊'},
   {id: 10,nick: '猫粮',name: '不吃猫粮的喵',pro: '牧师'},
@@ -2232,20 +2344,22 @@ var _gays = [
   //{id: 39,nick: '尼好',name: '尼好旅行者',pro: '猎人'},
   {id: 40,nick: '今晚',name: '今晚猎的痛快',pro: '猎人'},
   {id: 48,nick: '大T',name: 'Ticksk',pro: '猎人'},
-  //{id: 49,nick: '破魂',name: '破魂',pro: '猎人'},
+  {id: 49,nick: '破魂',name: '破魂',pro: '猎人'},
   {id: 16,nick: '血魔',name: '丶卡尔丶',pro: '法师'},
-  {id: 41,nick: '一建',name: '一建倾心',pro: '法师'},
   {id: 23,nick: '滑稽',name: '欧吃矛',pro: '法师'},
   {id: 48,nick: '奥特曼',name: '奥特曼小怪兽',pro: '法师'},
   {id: 25,nick: '速度灭',name: '速度灭灬',pro: '萨满'},
+  {id: 19,nick: '喵星人',name: '掠风',pro: '萨满'},
   //{id: 45,nick: '正气',name: '嚯香正气',pro: '萨满'},
   {id: 17,nick: '小七',name: 'Krystale',pro: '术士'},
   {id: 18,nick: '6BB',name: '柳哔哔',pro: '术士'},
   {id: 36,nick: '蘑菇',name: '小鸡炒蘑菇',pro: '术士'},
+  {id: 62,nick: '雷霆',name: '雷霆归来',pro: '术士'},
   //{id: 47,nick: '大S',name: 'Secretg',pro: '武僧'},
   {id: 33,nick: '小灵',name: '亡灬小灵',pro: '盗贼'},
   {id: 3,nick: '樱井',name: '樱井智子丶',pro: '盗贼'},
-  {id: 19,nick: '喵星人',name: '喵星人的救赎',pro: '死亡骑士'},
+  {id: 41,nick: '一建',name: '一建倾昕',pro: '盗贼'},
+  {id: 63,nick: '凯壮',name: '无常之鬼',pro: '盗贼'},
   {id: 29,nick: '黑锋',name: '黑锋强盗',pro: '死亡骑士'},
   {id: 26,nick: '小黑',name: '工口少女黄泉',pro: '恶魔猎手'},
   //{id: 20, nick: 'Des',name: 'Desperater',pro: '恶魔猎手'},
