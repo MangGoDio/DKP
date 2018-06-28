@@ -981,11 +981,6 @@ var _act = [
         mes: "初始分"
       },
       {
-        name: "小七",
-        point: 5,
-        mes: "H梦魇之龙DPS第一"
-      },
-      {
         name: "小峰",
         point: 5,
         mes: "H梦魇之龙治疗第一"
