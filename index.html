@@ -1,183 +1,189 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="UTF-8" />
-    <title>DKP日志</title>
-    <link rel="shortout icon" href="./img/favicon.ico" >
-    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
-    <link rel="stylesheet" href="./css/normalize.css">
-    <link rel="stylesheet" href="./css/style.css?v=20161004">
-    <script type="text/javascript" src="./js/vue.min.js"></script>
-    <script type="text/javascript" src="./js/Chart.min.js"></script>
-    <script type="text/javascript" src="./js/diary.js?v=201611102135"></script>
+  <meta charset="UTF-8" />
+  <title>DKP日志</title>
+  <link rel="shortout icon" href="./img/favicon.ico">
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <link rel="stylesheet" href="./css/normalize.css">
+  <link rel="stylesheet" href="./css/style.css?v=20161004">
+  <script type="text/javascript" src="./js/vue.min.js"></script>
+  <script type="text/javascript" src="./js/Chart.min.js"></script>
+  <script type="text/javascript" src="./js/diary.js?v=201611102135"></script>
 </head>
+
 <body>
-    <table v-cloak v-show="!status.team" transition="toggle">
-      <thead>
-        <tr>
-          <th @click="keySort('nick')">昵称</th>
-          <th @click="keySort('name')">全称</th>
-          <th @click="keySort('pro')">职业</th>
-          <th @click="keySort('total')">得分</th>
-          <th @click="keySort('spend')">花费</th>
-          <th @click="keySort('save')">当前</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="list of table"
-            @click="showInfo($index)"
-            :class="proColor(list.pro)">
-          <td v-text="list.nick"></td>
-          <td v-text="list.name"></td>
-          <td v-text="list.pro"></td>
-          <td v-text="list.total"></td>
-          <td v-text="list.spend"></td>
-          <td v-text="list.save"></td>
-        </tr>
-      </tbody>
-    </table>
+  <table v-cloak v-show="!status.team" transition="toggle">
+    <thead>
+      <tr>
+        <th @click="keySort('nick')">昵称</th>
+        <th @click="keySort('name')">全称</th>
+        <th @click="keySort('pro')">职业</th>
+        <th @click="keySort('total')">得分</th>
+        <th @click="keySort('spend')">花费</th>
+        <th @click="keySort('save')">当前</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="list of table" @click="showInfo($index)" :class="proColor(list.pro)">
+        <td v-text="list.nick"></td>
+        <td v-text="list.name"></td>
+        <td v-text="list.pro"></td>
+        <td v-text="list.total"></td>
+        <td v-text="list.spend"></td>
+        <td v-text="list.save"></td>
+      </tr>
+    </tbody>
+  </table>
 
-    <nav v-cloak>
-      <ul class="btn">
-        <li @click="status.team = !status.team"
-            v-text="status.team ? 'DKP概况' : '团队日志'"></li>
-        <li @click="chart">数据图表</li>
-        <!--<li>屌炸榜</li>-->
-        <li class="update">
-          <span>更新日志</span>
-          <ul class="update-diary">
-            <li v-for="list of updateDiary"
-                v-text="list"></li>
+  <nav v-cloak>
+    <ul class="btn">
+      <li @click="status.team = !status.team" v-text="status.team ? 'DKP概况' : '团队日志'"></li>
+      <li @click="chart">数据图表</li>
+      <!--<li>屌炸榜</li>-->
+      <li class="update">
+        <span>更新日志</span>
+        <ul class="update-diary">
+          <li v-for="list of updateDiary" v-text="list"></li>
+        </ul>
+      </li>
+      <li @click="status.lihailihai = !status.lihailihai">厉害榜</li>
+      <li @click="status.isSB = !status.isSB">毒瘤榜</li>
+    </ul>
+  </nav>
+
+  <section v-cloak v-show="status.team" transition="toggle">
+    <ul>
+      <li v-for="day of diary" :class="{active: status.diary[$index]}">
+        <div class="head" @click="showDiary($index)">
+          <p v-text="day.date"></p>
+          <span></span>
+        </div>
+        <div class="main">
+          <p>
+            <span class="left">集合人员：</span>
+            <span class="right">
+              <em v-for="info of day.begin" v-text="info + '、'" :class="nameColor(info)"></em>
+            </span>
+          </p>
+          <p>
+            <span class="left">有事请假：</span>
+            <span class="right">
+              <em v-for="info of day.off" v-text="info + '、'" :class="nameColor(info)"></em>
+            </span>
+          </p>
+          <p>
+            <span class="left">解散人员：</span>
+            <span class="right">
+              <em v-for="info of day.end" v-text="info + '、'" :class="nameColor(info)"></em>
+            </span>
+          </p>
+          <p v-text="'击杀BOSS：' + day.kill.length + ' 个'"></p>
+          <p>
+            <span>分数概况：</span>
+            <span>
+              <ul class="other">
+                <li v-for="add of day.add">
+                  <em v-text="add.name" :class="nameColor(add.name)"></em>
+                  <span v-text="' +' + add.point + '分 ' + add.mes"></span>
+                </li>
+              </ul>
+              <ul class="other">
+                <li v-for="reduce of day.reduce">
+                  <em v-text="reduce.name" :class="nameColor(reduce.name)"></em>
+                  <span v-text="' -' + reduce.point + '分 ' + reduce.mes"></span>
+                </li>
+              </ul>
+            </span>
+          </p>
+          <ul class="boss">
+            <li v-for="list of day.kill">
+              <p v-text="list.dif + list.name"></p>
+              <p>
+                <span class="left">参与击杀：</span>
+                <span class="right">
+                  <em v-for="infoRen of list.ren" v-text="infoRen + '、'" :class="nameColor(infoRen)"></em>
+                </span>
+              </p>
+              <ul>
+                <li v-for="info of list.equip">
+                  <p>
+                    <em v-text="info.ren" :class="nameColor(info.ren)"></em>
+                    <span v-text="treasure(info)"></span>
+                  </p>
+                  <p v-text="info.name"></p>
+                </li>
+              </ul>
+            </li>
           </ul>
-        </li>
-      </ul>
-    </nav>
+        </div>
 
-    <section v-cloak v-show="status.team" transition="toggle">
-      <ul>
-        <li v-for="day of diary" :class="{active: status.diary[$index]}">
-          <div class="head" @click="showDiary($index)">
-            <p v-text="day.date"></p>
-            <span></span>
-          </div>
-          <div class="main">
-            <p>
-              <span class="left">集合人员：</span>
-              <span class="right">
-                <em v-for="info of day.begin"
-                    v-text="info + '、'"
-                    :class="nameColor(info)"></em>
-              </span>
-            </p>
-            <p>
-              <span class="left">有事请假：</span>
-              <span class="right">
-                <em v-for="info of day.off"
-                    v-text="info + '、'"
-                    :class="nameColor(info)"></em>
-              </span>
-            </p>
-            <p>
-              <span class="left">解散人员：</span>
-              <span class="right">
-                <em v-for="info of day.end"
-                    v-text="info + '、'"
-                    :class="nameColor(info)"></em>
-              </span>
-            </p>
-            <p v-text="'击杀BOSS：' + day.kill.length + ' 个'"></p>
-            <p>
-              <span>分数概况：</span>
-              <span>
-                <ul class="other">
-                  <li v-for="add of day.add">
-                    <em v-text="add.name" :class="nameColor(add.name)"></em>
-                    <span v-text="' +' + add.point + '分 ' + add.mes"></span>
-                  </li>
-                </ul>
-                <ul class="other">
-                  <li v-for="reduce of day.reduce">
-                    <em v-text="reduce.name" :class="nameColor(reduce.name)"></em>
-                    <span v-text="' -' + reduce.point + '分 ' + reduce.mes"></span>
-                  </li>
-                </ul>
-              </span>
-            </p>
-            <ul class="boss">
-              <li v-for="list of day.kill">
-                <p v-text="list.dif + list.name"></p>
-                <p>
-                  <span class="left">参与击杀：</span>
-                  <span class="right">
-                    <em v-for="infoRen of list.ren"
-                        v-text="infoRen + '、'"
-                        :class="nameColor(infoRen)"></em>
-                  </span>
-                </p>
-                <ul>
-                  <li v-for="info of list.equip">
-                    <p>
-                      <em v-text="info.ren" :class="nameColor(info.ren)"></em>
-                      <span v-text="treasure(info)"></span>
-                    </p>
-                    <p v-text="info.name"></p>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
+      </li>
+    </ul>
+  </section>
 
-        </li>
-      </ul>
-    </section>
-
-    <div v-cloak v-show="status.box" transition="toggle" class="info">
-      <p v-text="infoBox.name"></p>
-      <ul>
-        <li v-text="'得分：'+ infoBox.total"></li>
-        <li v-text="'花费：'+ infoBox.spend"></li>
-        <li v-text="'当前：'+ infoBox.save"></li>
-      </ul>
-      <select v-model="thisDate" @change="dateChange">
-        <option v-for="info of dateNum"
-                :value="info.id"
-                v-text="info.begin + ' ~ ' + info.end"></option>
-      </select>
-      <ul>
-        <li v-for="list of infoBoxDate">
-          <p v-text="list.date"></p>
+  <div v-cloak v-show="status.box" transition="toggle" class="info">
+    <p v-text="infoBox.name"></p>
+    <ul>
+      <li v-text="'得分：'+ infoBox.total"></li>
+      <li v-text="'花费：'+ infoBox.spend"></li>
+      <li v-text="'当前：'+ infoBox.save"></li>
+    </ul>
+    <select v-model="thisDate" @change="dateChange">
+      <option v-for="info of dateNum" :value="info.id" v-text="info.begin + ' ~ ' + info.end"></option>
+    </select>
+    <ul>
+      <li v-for="list of infoBoxDate">
+        <p v-text="list.date"></p>
+        <ul>
+          <li v-text="'集合：' + list.begin"></li>
+          <li v-text="'BOSS：' + list.boss"></li>
+          <li v-text="'解散：' + list.end"></li>
+          <li v-text="'消费：' + list.spend"></li>
+          <li v-text="'奖励：' + list.add"></li>
+          <li v-text="'犯错：' + list.reduce"></li>
           <ul>
-            <li v-text="'集合：' + list.begin"></li>
-            <li v-text="'BOSS：' + list.boss"></li>
-            <li v-text="'解散：' + list.end"></li>
-            <li v-text="'消费：' + list.spend"></li>
-            <li v-text="'奖励：' + list.add"></li>
-            <li v-text="'犯错：' + list.reduce"></li>
-            <ul>
-              <li v-for="info of list.info"
-                  v-text="'-' + info.point + '分 ' + info.name"></li>
-            </ul>
-            <ul>
-              <li v-for="add of list.addMes"
-                  v-text="'+' + add.point + '分 ' + add.mes"></li>
-            </ul>
-            <ul>
-              <li v-for="reduce of list.reduceMes"
-                  v-text="'-' + reduce.point + '分 ' + reduce.mes"></li>
-            </ul>
+            <li v-for="info of list.info" v-text="'-' + info.point + '分 ' + info.name"></li>
           </ul>
-        </li>
+          <ul>
+            <li v-for="add of list.addMes" v-text="'+' + add.point + '分 ' + add.mes"></li>
+          </ul>
+          <ul>
+            <li v-for="reduce of list.reduceMes" v-text="'-' + reduce.point + '分 ' + reduce.mes"></li>
+          </ul>
+        </ul>
+      </li>
+    </ul>
+    <span @click="status.box = false"></span>
+  </div>
+
+  <div class="chart">
+    <canvas id="myChart"></canvas>
+  </div>
+
+  <ul class="award" v-show="status.lihailihai">
+    <h4>厉害榜</h4>
+    <li v-for="list of addTable">
+      <h5 v-text='list.name'></h5>
+      <ul>
+        <li v-for="info of list.addArr" v-text="info.date + ' ' + info.mes"></li>
       </ul>
-      <span @click="status.box = false"></span>
-    </div>
+    </li>
+  </ul>
 
-    <div class="chart">
-      <canvas id="myChart"></canvas>
-    </div>
-
-    <ul class="award"></ul>
+  <ul class="award" v-show="status.isSB">
+    <h4>毒瘤榜</h4>
+    <li v-for="list of reduceTable">
+      <h5 v-text='list.name'></h5>
+      <ul>
+        <li v-for="info of list.reduceArr" v-text="info"></li>
+      </ul>
+    </li>
+  </ul>
 
 
 </body>
-    <script type="text/javascript" src="./js/script.js?v=20161004"></script>
+<script type="text/javascript" src="./js/script.js?v=20161004"></script>
+
 </html>

@@ -10,7 +10,9 @@
         team: false,
         box: false,
         diary: [],
-        chart: false
+        chart: false,
+        lihailihai: false,
+        isSB: false
       },
       sort: {
         nick: false,
@@ -296,11 +298,16 @@
                 data.addMes[k].mes !== "全勤分" &&
                 data.addMes[k].mes !== "初始分"
               )
-                info.addArr.push(data.addMes[k].mes);
+                info.addArr.push({ date: data.date, mes: data.addMes[k].mes });
             }
           }
           if (info.addArr.length > 0) addTableData.push(info);
         }
+        addTableData.sort(function(a, b) {
+          return b.addArr.length - a.addArr.length;
+        });
+        vm.addTable = addTableData;
+        console.log(vm.addTable);
       },
       initReduceTable: function() {
         let reduceData = [];
@@ -311,12 +318,17 @@
           };
           for (var j = 0, mango = vm.table[i].date.length; j < mango; j++) {
             var data = vm.table[i].date[j];
+
             for (var k = 0, jojo = data.reduceMes.length; k < jojo; k++) {
               info.reduceArr.push(data.reduceMes[k].mes);
             }
           }
           if (info.reduceArr.length > 0) reduceData.push(info);
         }
+        reduceData.sort(function(a, b) {
+          return b.reduceArr.length - a.reduceArr.length;
+        });
+        vm.reduceTable = reduceData;
       },
       initServiceTable: function() {
         let serviceTableData = [];
@@ -334,6 +346,9 @@
           }
           if (info.serviceArr.length > 0) serviceTableData.push(info);
         }
+        serviceTableData.sort(function(a, b) {
+          return b.serviceArr.length - a.serviceArr.length;
+        });
       }
     }
   });
